@@ -1,5 +1,22 @@
-// --- Loader de SVGs para la sección Retrato ---
-const svgData = [
+// --- Loader dinámico de SVGs e Imágenes para la sección Retrato ---
+const mediaData = [
+  // --- Imágenes originales del HTML ---
+  {
+    url: 'https://raw.githubusercontent.com/alexander7l/Flowers-Diana-Gift-Background-/main/Background6.png',
+    containerSelector: '.image-container',
+    type: 'image',
+    alt: 'Background Image',
+    className: null
+  },
+  {
+    url: 'https://raw.githubusercontent.com/alexander7l/Flowers-Diana-Gift-Background-/main/Diana%27s%20Flowers%20Gift.png',
+    containerSelector: '.fade-container',
+    type: 'image',
+    alt: 'Fade Image',
+    className: 'fade-image'
+  },
+
+  // --- SVGs ---
   { url: 'https://raw.githubusercontent.com/alexander7l/svg-s/main/main-svg.svg', containerId: 'neon-container' },
   { url: 'https://raw.githubusercontent.com/alexander7l/svg-s/main/font-name.svg', containerId: 'font-container' },
   { url: 'https://raw.githubusercontent.com/alexander7l/svg-s/main/left-heart.svg', containerId: 'left-heart-container' },
@@ -17,26 +34,42 @@ const svgData = [
   { url: 'https://raw.githubusercontent.com/alexander7l/svg-s/main/right-star.svg', containerId: 'right-star-container' }
 ];
 
-// --- Función para cargar todos los SVGs dinámicamente ---
-async function loadAllSVGs() {
+// --- Función para cargar dinámicamente imágenes y SVGs ---
+async function loadPortraitAssets() {
   try {
-    const fetchPromises = svgData.map(item =>
+    const fetchPromises = mediaData.map(item =>
       fetch(item.url).then(res => {
         if (!res.ok) throw new Error(`Error cargando ${item.url}: ${res.statusText}`);
-        return res.text();
+        return item.type === 'image' ? res.blob() : res.text();
       })
     );
 
-    const svgs = await Promise.all(fetchPromises);
+    const contents = await Promise.all(fetchPromises);
 
-    svgs.forEach((svgContent, index) => {
-      const container = document.getElementById(svgData[index].containerId);
-      if (container) container.innerHTML = svgContent;
+    contents.forEach((content, index) => {
+      const item = mediaData[index];
+
+      if (item.type === 'image') {
+        const container = document.querySelector(item.containerSelector);
+        if (!container) return;
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(content);
+        img.alt = item.alt || '';
+        if (item.className) img.classList.add(item.className);
+
+        // Reemplaza cualquier imagen anterior (mantiene HTML limpio)
+        container.innerHTML = '';
+        container.appendChild(img);
+      } else {
+        const container = document.getElementById(item.containerId);
+        if (container) container.innerHTML = content;
+      }
     });
   } catch (error) {
-    console.error('Error al cargar los SVG:', error);
+    console.error('Error al cargar los elementos del retrato:', error);
   }
 }
 
-// Ejecutar al cargar el script
-loadAllSVGs();
+// --- Ejecutar automáticamente ---
+loadPortraitAssets();
