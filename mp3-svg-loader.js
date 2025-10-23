@@ -10,7 +10,7 @@ const mp3SvgData = [
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/next.svg', containerId: 'next-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/previous.svg', containerId: 'previous-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/repeat.svg', containerId: 'repeat-all-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/refs/heads/main/repeat-one.svg', containerId: 'repeat-one-icon' },
+  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/repeat-one.svg', containerId: 'repeat-one-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/share.svg', containerId: 'share-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/shuffle.svg', containerId: 'shuffle-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/more.svg', containerId: 'more-icon' },
@@ -41,4 +41,5 @@ async function loadMp3SVGs() {
 
 // Ejecutar al cargar el script
 loadMp3SVGs();
+
 
