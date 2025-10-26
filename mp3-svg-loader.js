@@ -5,7 +5,8 @@ const mp3SvgData = [
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/pause.svg', containerId: 'pause-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/comment.svg', containerId: 'comment-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/info.svg', containerId: 'info-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/like.svg', containerId: 'like-icon' },
+  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/like-off.svg', containerId: 'like-off-icon' },
+  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/like-on.svg', containerId: 'like-on-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/list.svg', containerId: 'list-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/next.svg', containerId: 'next-icon' },
   { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/previous.svg', containerId: 'previous-icon' },
@@ -41,5 +42,6 @@ async function loadMp3SVGs() {
 
 // Ejecutar al cargar el script
 loadMp3SVGs();
+
 
 
