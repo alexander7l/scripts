@@ -1,3 +1,5 @@
+// --- CDN de jsDelivr para el Loader de SVGs del Retrato ---
+// https://cdn.jsdelivr.net/gh/alexander7l/scripts@main/portrait-svg-loader.js
 // --- Loader de SVGs para la sección Retrato ---
 
 // 🔗 Link base configurable (solo cambia aquí si cambias repo o usuario)
@@ -45,3 +47,4 @@ async function loadAllSVGs() {
 
 // --- Ejecutar al cargar el script ---
 loadAllSVGs();
+
