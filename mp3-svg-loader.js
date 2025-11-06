@@ -1,3 +1,5 @@
+// --- CDN de jsDelivr para el Loader de SVGs del MP3 Player ---
+// https://cdn.jsdelivr.net/gh/alexander7l/scripts@main/mp3-svg-loader.js
 // --- Loader de SVGs para el MP3 Player ---
 
 // 🔗 Link base configurable (solo cambia aquí si cambias repo o usuario)
@@ -47,3 +49,4 @@ async function loadMp3SVGs() {
 
 // --- Ejecutar al cargar el script ---
 loadMp3SVGs();
+
