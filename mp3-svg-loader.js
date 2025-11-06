@@ -1,29 +1,34 @@
 // --- Loader de SVGs para el MP3 Player ---
+
+// 🔗 Link base configurable (solo cambia aquí si cambias repo o usuario)
+const baseURLmp3 = 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/';
+
+// Lista de SVGs (solo el nombre del archivo y el contenedor)
 const mp3SvgData = [
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/circle.svg', containerId: 'circle' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/play.svg', containerId: 'play-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/pause.svg', containerId: 'pause-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/comment.svg', containerId: 'comment-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/info.svg', containerId: 'info-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/like-off.svg', containerId: 'like-off-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/like-on.svg', containerId: 'like-on-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/list.svg', containerId: 'list-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/next.svg', containerId: 'next-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/previous.svg', containerId: 'previous-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/repeat.svg', containerId: 'repeat-all-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/repeat-one.svg', containerId: 'repeat-one-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/share.svg', containerId: 'share-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/shuffle.svg', containerId: 'shuffle-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/more.svg', containerId: 'more-icon' },
-  { url: 'https://raw.githubusercontent.com/alexander7l/mp3-svg-s/main/youtube.svg', containerId: 'youtube-icon' }
+  { file: 'circle.svg', containerId: 'circle' },
+  { file: 'play.svg', containerId: 'play-icon' },
+  { file: 'pause.svg', containerId: 'pause-icon' },
+  { file: 'comment.svg', containerId: 'comment-icon' },
+  { file: 'info.svg', containerId: 'info-icon' },
+  { file: 'like-off.svg', containerId: 'like-off-icon' },
+  { file: 'like-on.svg', containerId: 'like-on-icon' },
+  { file: 'list.svg', containerId: 'list-icon' },
+  { file: 'next.svg', containerId: 'next-icon' },
+  { file: 'previous.svg', containerId: 'previous-icon' },
+  { file: 'repeat.svg', containerId: 'repeat-all-icon' },
+  { file: 'repeat-one.svg', containerId: 'repeat-one-icon' },
+  { file: 'share.svg', containerId: 'share-icon' },
+  { file: 'shuffle.svg', containerId: 'shuffle-icon' },
+  { file: 'more.svg', containerId: 'more-icon' },
+  { file: 'youtube.svg', containerId: 'youtube-icon' }
 ];
 
 // --- Función para cargar todos los SVGs dinámicamente ---
 async function loadMp3SVGs() {
   try {
     const fetchPromises = mp3SvgData.map(item =>
-      fetch(item.url).then(res => {
-        if (!res.ok) throw new Error(`Error cargando ${item.url}: ${res.statusText}`);
+      fetch(baseURLmp3 + item.file).then(res => {
+        if (!res.ok) throw new Error(`Error cargando ${item.file}: ${res.statusText}`);
         return res.text();
       })
     );
@@ -40,8 +45,5 @@ async function loadMp3SVGs() {
   }
 }
 
-// Ejecutar al cargar el script
+// --- Ejecutar al cargar el script ---
 loadMp3SVGs();
-
-
-
